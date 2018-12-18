@@ -5,23 +5,20 @@
       <span class="navbar-brand">Recipe Book</span>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">
+      <li class="active"><a href="#" (click)="onSelect('recipe')">
         Recipe <span class="sr-only">(current)</span>
       </a></li>
-      <li><a href="#">Shopping List</a></li>
-      <li class="dropdown" dropdown> <!-- {1} -->
-        <a dropdownToggle role="button"> <!-- {2} -->
-          Dropdown <span class="caret"></span></a>
-        <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
-        </ul>
-      </li>
+      <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right" dropdown> <!-- {1} -->
+      <a dropdownToggle role="button" class="dropdown-toggle"> <!-- {2} -->
+        Manage <span class="caret"></span></a>
+      <ul *dropdownMenu class="dropdown-menu nav navbar-btn"> <!-- {3} -->
+        <li><a href="#">Save Data</a></li>
+        <li><a href="#">Fetch Data</a></li>
+
+      </ul>
     </ul>
   </div>
 </nav>

@@ -16,4 +16,7 @@ ingredients: IngredientModule [] = [
   ngOnInit() {
   }
 
+  onIngredientAdded(ingredient: IngredientModule) {
+    this.ingredients.push(ingredient);
+  }
 }
