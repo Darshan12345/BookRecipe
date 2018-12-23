@@ -5,18 +5,18 @@
       <span class="navbar-brand">Recipe Book</span>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#" (click)="onSelect('recipe')">
+      <li routerLinkActive="active"><a  routerLink="/recipes">
         Recipe <span class="sr-only">(current)</span>
       </a></li>
-      <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+      <li routerLinkActive="active"><a    routerLink="/shopping-list">Shopping List</a></li>
 
     </ul>
     <ul class="nav navbar-nav navbar-right" dropdown> <!-- {1} -->
       <a dropdownToggle role="button" class="dropdown-toggle"> <!-- {2} -->
         Manage <span class="caret"></span></a>
       <ul *dropdownMenu class="dropdown-menu nav navbar-btn"> <!-- {3} -->
-        <li><a href="#">Save Data</a></li>
-        <li><a href="#">Fetch Data</a></li>
+        <li><a >Save Data</a></li>
+        <li><a >Fetch Data</a></li>
 
       </ul>
     </ul>

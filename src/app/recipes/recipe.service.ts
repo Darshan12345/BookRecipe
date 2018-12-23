@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import { Injectable} from '@angular/core';
 import {RecipeModule} from './recipe/recipe.module';
 import {IngredientModule} from '../shared/ingredient/ingredient.module';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
@@ -11,7 +11,6 @@ export class RecipeService {
   constructor (private spls: ShoppingListService) {
 
    }
-  public recipeSelected = new EventEmitter<RecipeModule>();
  private recipes: RecipeModule[] = [
     new RecipeModule('Delicious Pizza', 'Vegiee Cheese Pizza',
       'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/' +
@@ -30,7 +29,10 @@ export class RecipeService {
   }
 
   public addIngredientToRecipeList(ingredient: IngredientModule[]) {
+    this.spls.addIngredients(ingredient);
+  }
 
-this.spls.addIngredients(ingredient);
+  public getRecipe(id: number) {
+   return this.recipes[id];
   }
 }
