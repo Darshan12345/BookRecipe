@@ -2,16 +2,19 @@ import { Injectable} from '@angular/core';
 import {RecipeModule} from './recipe/recipe.module';
 import {IngredientModule} from '../shared/ingredient/ingredient.module';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-
   constructor (private spls: ShoppingListService) {
 
    }
- private recipes: RecipeModule[] = [
+
+  recipeChange =  new Subject<RecipeModule[]>();
+
+  private recipes: RecipeModule[] = [
     new RecipeModule('Delicious Pizza', 'Vegiee Cheese Pizza',
       'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/' +
       'collection-image/2013/05/frying-pan-pizza-easy-recipe-collection.jpg',
@@ -34,5 +37,19 @@ export class RecipeService {
 
   public getRecipe(id: number) {
    return this.recipes[id];
+  }
+  addRecipe(recipe: RecipeModule) {
+   this.recipes.push(recipe);
+    this.recipeChange.next(this.recipes.slice());
+
+  }
+  updateRecipe(index: number, recipe: RecipeModule) {
+    this.recipes[index] = recipe;
+    this.recipeChange.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+   this.recipes.splice(index, 1);
+   this.recipeChange.next(this.recipes.slice());
   }
 }

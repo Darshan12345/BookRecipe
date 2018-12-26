@@ -8,6 +8,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.css']
 })
+
 export class RecipeDetailComponent implements OnInit {
  recipeselected: RecipeModule;
  id: number;
@@ -33,5 +34,10 @@ this.recipeService.addIngredientToRecipeList(this.recipeselected.ingredients);
 
   onEditRecipe() {
     this.router.navigate(['edit'], { relativeTo: this.route });
+  }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }
