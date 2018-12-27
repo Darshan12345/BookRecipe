@@ -52,4 +52,10 @@ export class RecipeService {
    this.recipes.splice(index, 1);
    this.recipeChange.next(this.recipes.slice());
   }
+
+  setRecipe(recipes: RecipeModule[]) {
+   this.recipes = recipes;
+   this.recipeChange.next(recipes);
+
+  }
 }

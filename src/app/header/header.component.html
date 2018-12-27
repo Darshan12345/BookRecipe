@@ -4,20 +4,31 @@
 
       <span class="navbar-brand">Recipe Book</span>    </div>
     <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
-        <a routerLink="/recipes">
+      <li routerLinkActive="active"><a  routerLink="/recipes">
         Recipe <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+      </a></li>
+      <li routerLinkActive="active"><a    routerLink="/shopping-list">Shopping List</a></li>
 
     </ul>
-    <ul class="nav navbar-nav navbar-right" dropdown> <!-- {1} -->
+
+    <ul class="nav navbar-nav navbar-right">
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+        <li routerLinkActive="active"><a  routerLink="/sign-up">
+          Register <span class="sr-only">(current)</span>
+        </a></li>
+        <li routerLinkActive="active"><a    routerLink="/sign-in">Login</a></li>
+      </ng-template>
+      <li><a style="cursor: pointer"  *ngIf="authService.isAuthenticated()" (click)="logout()">Log Out</a></li>
+
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right" dropdown *ngIf="authService.isAuthenticated()"> <!-- {1} -->
       <a dropdownToggle role="button" class="dropdown-toggle"> <!-- {2} -->
         Manage <span class="caret"></span></a>
       <ul *dropdownMenu class="dropdown-menu nav navbar-btn"> <!-- {3} -->
-        <li><a >Save Data</a></li>
-        <li><a >Fetch Data</a></li>
+        <li><a (click)="onSaveData()">Save Data</a></li>
+        <li><a (click)="fetchData()">Fetch Data</a></li>
 
       </ul>
     </ul>
